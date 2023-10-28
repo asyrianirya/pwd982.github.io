@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> REGISTRASI </title>
+    <!------CORE--------->
+	<link rel="stylesheet" href="style.css">
+    <link href="..\assets\css\bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="..\assets\css\bootstrap-icons.css" />
+	<script src="..\assets\js\add\jquery-3.7.1.min.js"></script>
+	<script src="..\assets\js\bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="..\assets\css\all.css" />
+	
+	<!--------------->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title" style="text-align: center;">PROTOTIPE FORM REGISTRASI</div>
+	<p style="text-align: center;">Jangan memasukkan data asli kedalam sini</p>
+    <div class="content">
+     <form name="register-form">
+	 <!-------MY-ALERT-------->
+		<div id="my-alert" class="alert
+					alert-dismissible 
+					fade show my-alert d-none" role="alert">
+			[THIS IS ALERT]
+			<button type="button"
+					class="btn-close"
+					data-bs-dismiss="alert"
+					aria-label="Close">
+		</div>
+	 <!--------------->
+        <div class="user-details">
+		  <!-------NAMA LENGKAP-------->
+          <div class="input-box">
+             <label for="NAMA_LENGKAP" class="form-label">Nama Lengkap</label>
+              <input type="text" id="NAMA_LENGKAP" name="NAMA_LENGKAP" class="form-control" placeholder="Masukan nama lengkap" required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN NAMA LENGKAP">
+          </div>
+		  <!-------JENIS KELAMIN-------->
+          <div class="input-box">
+            <label for="JENIS_KELAMIN" class="form-label">Jenis Kelamin</label>
+              <select type="text" id="JENIS_KELAMIN" name="JENIS_KELAMIN" class="form-control" placeholder="Pilih jenis kelamin " required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN JENIS KELAMIN">
+                <option>--Pilih jenis kelamin--</option>
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+              </select>
+          </div>
+		  <!-------TEMPAT LAHIR-------->
+           <div class="input-box">
+           <label for="TEMPAT_LAHIR" class="form-label">Tempat Lahir</label>
+              <input type="text" id="TEMPAT_LAHIR" name="TEMPAT_LAHIR" class="form-control" placeholder="Masukan tempat lahir " required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN TEMPAT LAHIR">
+          </div>
+		  <!-------TANGGAL LAHIR-------->
+           <div class="input-box">
+           <label for="TANGGAL_LAHIR" class="form-label">Tanggal Lahir</label>
+              <input type="date" id="TANGGAL_LAHIR" name="TANGGAL_LAHIR" class="form-control" placeholder="Masukan tanggal lahir " required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN TANGGAL LAHIR">
+          </div>
+		  <!-------ALAMAT-------->
+          <div class="input-box">
+           <label for="ALAMAT" class="form-label">Alamat</label>
+              <input type="text" id="ALAMAT" name="ALAMAT" class="form-control" placeholder="Masukan alamat " required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN ALAMAT">
+          </div>
+		  <!-------EMAIL-------->
+          <div class="input-box">
+            <label for="EMAIL" class="form-label">Email</label>
+              <input type="email" id="EMAIL" name="EMAIL" class="form-control" placeholder="Masukan email " required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN EMAIL">
+          </div>
+		  <!-------KONTAK-------->
+          <div class="input-box">
+            <label for="KONTAK" class="form-label">Nomor Kontak</label>
+              <input type="number" id="KONTAK" name="KONTAK" class="form-control" placeholder="Masukan nomor telepon" required
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN NOMOR KONTAK">
+          </div>
+		  <!-------KETERANGAN-------->
+          <div class="input-box">
+          <label for="KETERANGAN" class="form-label">KETERANGAN (OPSIONAL)</label>
+              <input type="text" id="KETERANGAN" name="KETERANGAN" class="form-control" placeholder="Masukan keterangan"
+			  data-toggle="tooltip" data-placement="top" title="MASUKKAN KETERANGAN (OPSIONAL)">
+          </div>
+        </div>
+		<div class="d-none">
+			<input type="text" id="TANGGAL_REGISTRASI" name="TANGGAL_REGISTRASI" class="form-control"  >
+		</div>
+        <div class="button">
+          <input type="submit" class="btn-submit" value="Kirim Registrasi" onclick="aturNilaiTanggal()">
+		</div>
+        <div class="button button-loading d-none" disabled style="text-align: center;border-radius: 5px;border: none;color: #fff;font-size: 18px;font-weight: 500;letter-spacing: 1px;background: #000">
+			<span class="spinner-border" role="status" aria-hidden="true"></span>
+			Tunggu Sbntr...
+		</div>
+      </form>
+    </div>
+  </div>
+
+  
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBSAHHGd_7PWitzYhtmpIsWfiwmOsaKBIN8LEn7W72zq0d7fMLQV-z5-oZry3Qc6u2/exec'
+        const form = document.forms['register-form']
+		const btnLoading = document.querySelector(".button-loading"); 
+		const btnSubmit = document.querySelector(".btn-submit"); 
+		const myAlert = document.querySelector(".my-alert");
+		
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+			btnLoading.classList.toggle("d-none");
+			btnSubmit.classList.toggle("d-none");
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => { 
+				btnLoading.classList.toggle("d-none"); 
+				btnSubmit.classList.toggle("d-none"); 
+				if ( myAlert.classList.contains('alert-danger') ) {
+					myAlert.classList.remove('alert-danger');
+					myAlert.classList.add('alert-success');
+					
+				} else {
+					myAlert.classList.add('alert-success');
+				}
+				myAlert.innerHTML = "<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.";
+				myAlert.classList.toggle("d-none");
+				console.log("success");
+			})
+            .catch(error => {
+			if ( myAlert.classList.contains('alert-success') ) {
+				myAlert.classList.remove('alert-danger');
+				myAlert.classList.add('alert-success');
+				
+			} else {
+				myAlert.classList.add('alert-success');
+			}
+			myAlert.innerHTML = "<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.";
+			myAlert.classList.toggle("d-none");
+			})
+            form.reset();
+        })
+    </script>
+	
+	<script>
+		function aturNilaiTanggal() {
+			var TANGGAL_REGISTRASI = document.getElementById("TANGGAL_REGISTRASI");
+
+			var sekarang = new Date();
+			var tahun = sekarang.getFullYear();
+			var bulan = String(sekarang.getMonth() + 1).padStart(2, '0'); 
+			var tanggal = String(sekarang.getDate()).padStart(2, '0');
+			var jam = String(sekarang.getHours()).padStart(2, '0');
+			var menit = String(sekarang.getMinutes()).padStart(2, '0');
+			var detik = String(sekarang.getSeconds()).padStart(2, '0');
+
+			TANGGAL_REGISTRASI.value = tanggal + "-" + bulan + "-" + tahun + " " + jam + ":" + menit + ":" + detik;
+		}
+	</script>
+
+	<script>
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+	
+	<script src="script.js"></script>
+
+</body>
+</html>
