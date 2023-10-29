@@ -6,11 +6,11 @@
     <!------CORE--------->
 	<link rel="stylesheet" href="style.css">
 	<link href="..\assets\css\bootstrap.min.css" rel="stylesheet">
+	<link href="..\assets\css\bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="..\assets\css\all.css" />
 	<link rel="stylesheet" href="..\assets\css\bootstrap-icons.css" />
 	<script src="..\assets\js\add\jquery-3.7.1.min.js"></script>
 	<script src="..\assets\js\bootstrap.bundle.min.js"></script>
-
 	
 	<!--------------->
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,19 +18,11 @@
 <body>
   <div class="container">
     <div class="title" style="text-align: center;">PROTOTIPE FORM REGISTRASI</div>
-	<p style="text-align: center;">Jangan memasukkan data asli kedalam sini</p>
+		<!-------MY-ALERT-------->
+		<p style="text-align: right;">Jangan memasukkan data asli kedalam sini</p>
+		<div id="my-alert" class="alert fade show my-alert d-none" role="alert" onclick="closeAlert()"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></div>
     <div class="content">
      <form name="register-form">
-	 <!-------MY-ALERT-------->
-		<div id="my-alert" class="alert
-					alert-dismissible 
-					fade show my-alert d-none" role="alert">
-			[THIS IS ALERT]
-			<button type="button"
-					class="btn-close"
-					data-bs-dismiss="alert"
-					aria-label="Close">
-		</div>
 	 <!--------------->
         <div class="user-details">
 		  <!-------NAMA LENGKAP-------->
@@ -96,8 +88,12 @@
 			<span class="spinner-border" role="status" aria-hidden="true"></span>
 			Tunggu Sbntr...
 		</div>
+
       </form>
     </div>
+
+	</div>
+	
   </div>
 
   
@@ -106,7 +102,7 @@
         const form = document.forms['register-form']
 		const btnLoading = document.querySelector(".button-loading"); 
 		const btnSubmit = document.querySelector(".btn-submit"); 
-		const myAlert = document.querySelector(".my-alert");
+		const myAlert = document.getElementById("my-alert");
 		
         form.addEventListener('submit', e => {
             e.preventDefault()
@@ -116,32 +112,50 @@
             .then(response => { 
 				btnLoading.classList.toggle("d-none"); 
 				btnSubmit.classList.toggle("d-none"); 
-				if ( myAlert.classList.contains('alert-danger') ) {
+				alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000);
+				console.log("success");
+			})
+            .catch(error => {
+			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000);
+			btnLoading.classList.toggle("d-none"); 
+			})
+            form.reset();
+        })
+    </script>
+	
+	<script>
+	function alertSuccess(message, timeout){
+	if ( myAlert.classList.contains('alert-danger') ) {
 					myAlert.classList.remove('alert-danger');
 					myAlert.classList.add('alert-success');
 					
 				} else {
 					myAlert.classList.add('alert-success');
 				}
-				myAlert.innerHTML = "<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.";
-				myAlert.classList.toggle("d-none");
-				console.log("success");
-			})
-            .catch(error => {
-		    	btnLoading.classList.toggle("d-none"); 
-			if ( myAlert.classList.contains('alert-success') ) {
+	myAlert.innerHTML = message;
+	myAlert.classList.toggle("d-none");
+	setTimeout(closeAlert, 3000);
+	}
+	function alertDanger(message, timeout) {
+	if ( myAlert.classList.contains('alert-success') ) {
 				myAlert.classList.remove('alert-danger');
 				myAlert.classList.add('alert-success');
 				
 			} else {
 				myAlert.classList.add('alert-success');
 			}
-			myAlert.innerHTML = "<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.";
+			myAlert.innerHTML = message;
 			myAlert.classList.toggle("d-none");
-			})
-            form.reset();
-        })
-    </script>
+			setTimeout(closeAlert, 3000);
+	}
+	</script>
+	
+	<!--BOOTSTRAP ALERT TIMER-->
+	<script>
+	function closeAlert(){
+		myAlert.classList.add("d-none");
+	}
+	</script>
 	
 	<script>
 		function aturNilaiTanggal() {
