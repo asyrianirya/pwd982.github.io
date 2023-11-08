@@ -14,7 +14,7 @@
     <div class="title" style="text-align: center;">PROTOTIPE FORM REGISTRASI</div>
 		<!-------MY-ALERT-------->
 		<p style="text-align: right;">Jangan memasukkan data asli kedalam sini</p>
-		<div id="my-alert" class="alert fade show my-alert d-none" role="alert" onclick="closeAlert()"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></div>
+		<div id="my-alert" class="alert fade show my-alert d-none" role="alert" onclick="closeAlert(alertId)"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></div>
     <div class="content">
      <form name="register-form">
 	 <!--------------->
@@ -76,12 +76,18 @@
 			<input type="text" id="TANGGAL_REGISTRASI" name="TANGGAL_REGISTRASI" class="form-control"  >
 		</div>
         <div class="button">
-          <input type="submit" class="btn-submit" value="Kirim Registrasi" onclick="aturNilaiTanggal()">
+			<input type="submit" class="btn-submit" value="Kirim Registrasi" onclick="aturNilaiTanggal()">
+			<div class="loading text-center d-none">
+				<button class="aaa123">
+					<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+					<span role="status">Loading...</span>
+				</button>
+			</div>
 		</div>
-        <div class="button button-loading d-none" disabled style="text-align: center;border-radius: 5px;border: none;color: #fff;font-size: 18px;font-weight: 500;letter-spacing: 1px;background: #000">
+        <!--<div class="button button-loading d-none" disabled style="text-align: center;border-radius: 5px;border: none;color: #fff;font-size: 18px;font-weight: 500;letter-spacing: 1px;background: #000">
 			<span class="spinner-border" role="status" aria-hidden="true"></span>
 			Tunggu Sbntr...
-		</div>
+		</div>-->
 
       </form>
     </div>
@@ -92,34 +98,45 @@
 
 	<script>window.jQuery || document.write('<script src="..\\assets\\js\\add\\jquery-3.7.1.slim.min.js"><\/script>')</script>
   
+	<script> const alertId = "my-alert"; </script>
+	
     <script>
+	function formControl(alert_id){
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxBSAHHGd_7PWitzYhtmpIsWfiwmOsaKBIN8LEn7W72zq0d7fMLQV-z5-oZry3Qc6u2/exec'
         const form = document.forms['register-form']
-		const btnLoading = document.querySelector(".button-loading"); 
+		//const btnLoading = document.querySelector(".button-loading"); 
 		const btnSubmit = document.querySelector(".btn-submit"); 
-		const myAlert = document.getElementById("my-alert");
+		const Spinner = document.querySelector(".loading");
+		var myAlert = document.getElementById(alert_id);
 		
         form.addEventListener('submit', e => {
             e.preventDefault()
-			btnLoading.classList.toggle("d-none");
+			//btnLoading.classList.toggle("d-none");
+			Spinner.classList.remove("d-none");
 			btnSubmit.classList.toggle("d-none");
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => { 
-				btnLoading.classList.toggle("d-none"); 
+				//btnLoading.classList.toggle("d-none"); 
+				Spinner.classList.add("d-none");
 				btnSubmit.classList.toggle("d-none"); 
-				alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000);
+				alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000, alert_id);
 				console.log("success");
 			})
             .catch(error => {
-			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000);
-			btnLoading.classList.toggle("d-none"); 
+			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000, alert_id);
+			//btnLoading.classList.toggle("d-none"); 
+			Spinner.classList.remove("d-none")
 			})
             form.reset();
         })
+	}
     </script>
 	
+	<script>formControl(alertId);</script>
+	
 	<script>
-	function alertSuccess(message, timeout){
+	function alertSuccess(message, timeout, alert_id){
+	var myAlert = document.getElementById(alert_id);
 	if ( myAlert.classList.contains('alert-danger') ) {
 					myAlert.classList.remove('alert-danger');
 					myAlert.classList.add('alert-success');
@@ -127,12 +144,13 @@
 				} else {
 					myAlert.classList.add('alert-success');
 				}
-	myAlert.innerHTML = message;
-	myAlert.classList.toggle("d-none");
-	setTimeout(closeAlert, 3000);
+				myAlert.innerHTML = message;
+				myAlert.classList.toggle("d-none");
+				setTimeout(function(){closeAlert(alert_id);}, 3000);
 	}
 	
-	function alertDanger(message, timeout) {
+	function alertDanger(message, timeout, alert_id) {
+	var myAlert = document.getElementById(alert_id);
 	if ( myAlert.classList.contains('alert-success') ) {
 				myAlert.classList.remove('alert-danger');
 				myAlert.classList.add('alert-success');
@@ -142,13 +160,14 @@
 			}
 			myAlert.innerHTML = message;
 			myAlert.classList.toggle("d-none");
-			setTimeout(closeAlert, 3000);
+			setTimeout(function(){closeAlert(alert_id);}, 3000);
 	}
 	</script>
 	
 	<!--BOOTSTRAP ALERT TIMER-->
 	<script>
-	function closeAlert(){
+	function closeAlert(alert_id){
+		var myAlert = document.getElementById(alert_id);
 		myAlert.classList.add("d-none");
 	}
 	</script>
