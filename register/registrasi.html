@@ -76,7 +76,7 @@
 			<input type="text" id="TANGGAL_REGISTRASI" name="TANGGAL_REGISTRASI" class="form-control"  >
 		</div>
         <div class="button">
-			<input type="submit" class="btn-submit" value="Kirim Registrasi" onclick="aturNilaiTanggal()">
+			<input type="submit" class="btn-submit" value="Kirim Registrasi" onclick="aturNilaiTanggal('TANGGAL_REGISTRASI')">
 			<div class="loading text-center d-none">
 				<button class="aaa123">
 					<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -94,11 +94,12 @@
 	<script>window.jQuery || document.write('<script src="..\\assets\\js\\add\\jquery-3.7.1.slim.min.js"><\/script>')</script>
   
 	<script> const alertId = "my-alert"; </script>
+	<script> const inputFormScript = 'https://script.google.com/macros/s/AKfycbxBSAHHGd_7PWitzYhtmpIsWfiwmOsaKBIN8LEn7W72zq0d7fMLQV-z5-oZry3Qc6u2/exec'; </script>
 	
     <script>
-	function formControl(alert_id){
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBSAHHGd_7PWitzYhtmpIsWfiwmOsaKBIN8LEn7W72zq0d7fMLQV-z5-oZry3Qc6u2/exec'
-        const form = document.forms['register-form']
+	function formControl(alert_id,URL){
+        const scriptURL = URL;
+        const form = document.forms['register-form'];
 		const btnSubmit = document.querySelector(".btn-submit"); 
 		const Spinner = document.querySelector(".loading");
 		var myAlert = document.getElementById(alert_id);
@@ -124,25 +125,11 @@
 	}
     </script>
 	
-	<script>formControl(alertId);</script>
+	<script>formControl(alertId, inputFormScript);</script>
 	
 	<script src="..\assets\js\asyalert.js"></script>	
-	
-	<script>
-		function aturNilaiTanggal() {
-			var TANGGAL_REGISTRASI = document.getElementById("TANGGAL_REGISTRASI");
+	<script src="..\assets\js\gettimedate.js"></script>
 
-			var sekarang = new Date();
-			var tahun = sekarang.getFullYear();
-			var bulan = String(sekarang.getMonth() + 1).padStart(2, '0'); 
-			var tanggal = String(sekarang.getDate()).padStart(2, '0');
-			var jam = String(sekarang.getHours()).padStart(2, '0');
-			var menit = String(sekarang.getMinutes()).padStart(2, '0');
-			var detik = String(sekarang.getSeconds()).padStart(2, '0');
-
-			TANGGAL_REGISTRASI.value = tanggal + "-" + bulan + "-" + tahun + " " + jam + ":" + menit + ":" + detik;
-		}
-	</script>
 
 	<script>
 		$(document).ready(function(){
