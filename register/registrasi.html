@@ -5,12 +5,9 @@
     <title> REGISTRASI </title>
     <!------CORE--------->
 	<link rel="stylesheet" href="style.css">
-	<link href="..\assets\css\bootstrap.min.css" rel="stylesheet">
-	<link href="..\assets\css\bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" href="..\assets\css\all.css" />
-	<link rel="stylesheet" href="..\assets\css\bootstrap-icons.css" />
+	<link href="..\assets\css\bootstrap-5.3.2\bootstrap.min.css" rel="stylesheet">
 	<script src="..\assets\js\add\jquery-3.7.1.slim.min.js"></script>
-	<script src="..\assets\js\bootstrap.bundle.min.js"></script>
+	<script src="..\assets\js\bootstrap-5.3.2\bootstrap.bundle.min.js"></script>
 	
 	<!--------------->
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,6 +133,7 @@
 	myAlert.classList.toggle("d-none");
 	setTimeout(closeAlert, 3000);
 	}
+	
 	function alertDanger(message, timeout) {
 	if ( myAlert.classList.contains('alert-success') ) {
 				myAlert.classList.remove('alert-danger');
