@@ -84,11 +84,6 @@
 				</button>
 			</div>
 		</div>
-        <!--<div class="button button-loading d-none" disabled style="text-align: center;border-radius: 5px;border: none;color: #fff;font-size: 18px;font-weight: 500;letter-spacing: 1px;background: #000">
-			<span class="spinner-border" role="status" aria-hidden="true"></span>
-			Tunggu Sbntr...
-		</div>-->
-
       </form>
     </div>
 
@@ -104,19 +99,16 @@
 	function formControl(alert_id){
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxBSAHHGd_7PWitzYhtmpIsWfiwmOsaKBIN8LEn7W72zq0d7fMLQV-z5-oZry3Qc6u2/exec'
         const form = document.forms['register-form']
-		//const btnLoading = document.querySelector(".button-loading"); 
 		const btnSubmit = document.querySelector(".btn-submit"); 
 		const Spinner = document.querySelector(".loading");
 		var myAlert = document.getElementById(alert_id);
 		
         form.addEventListener('submit', e => {
             e.preventDefault()
-			//btnLoading.classList.toggle("d-none");
 			Spinner.classList.remove("d-none");
 			btnSubmit.classList.toggle("d-none");
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => { 
-				//btnLoading.classList.toggle("d-none"); 
 				Spinner.classList.add("d-none");
 				btnSubmit.classList.toggle("d-none"); 
 				alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000, alert_id);
@@ -124,7 +116,6 @@
 			})
             .catch(error => {
 			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000, alert_id);
-			//btnLoading.classList.toggle("d-none"); 
 			Spinner.classList.remove("d-none")
 			})
             form.reset();
@@ -134,43 +125,7 @@
 	
 	<script>formControl(alertId);</script>
 	
-	<script>
-	function alertSuccess(message, timeout, alert_id){
-	var myAlert = document.getElementById(alert_id);
-	if ( myAlert.classList.contains('alert-danger') ) {
-					myAlert.classList.remove('alert-danger');
-					myAlert.classList.add('alert-success');
-					
-				} else {
-					myAlert.classList.add('alert-success');
-				}
-				myAlert.innerHTML = message;
-				myAlert.classList.toggle("d-none");
-				setTimeout(function(){closeAlert(alert_id);}, 3000);
-	}
-	
-	function alertDanger(message, timeout, alert_id) {
-	var myAlert = document.getElementById(alert_id);
-	if ( myAlert.classList.contains('alert-success') ) {
-				myAlert.classList.remove('alert-danger');
-				myAlert.classList.add('alert-success');
-				
-			} else {
-				myAlert.classList.add('alert-success');
-			}
-			myAlert.innerHTML = message;
-			myAlert.classList.toggle("d-none");
-			setTimeout(function(){closeAlert(alert_id);}, 3000);
-	}
-	</script>
-	
-	<!--BOOTSTRAP ALERT TIMER-->
-	<script>
-	function closeAlert(alert_id){
-		var myAlert = document.getElementById(alert_id);
-		myAlert.classList.add("d-none");
-	}
-	</script>
+	<script src="..\assets\js\asyalert.js"></script>	
 	
 	<script>
 		function aturNilaiTanggal() {
