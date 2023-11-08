@@ -141,7 +141,7 @@ form .user-details .input-box{
    margin: 35px 0
  }
  
- form div.button div.loading button.aaa123{
+ form div.button div.loading a.loading-button {
    height: 100%;
    width: 100%;
    border-radius: 5px;
