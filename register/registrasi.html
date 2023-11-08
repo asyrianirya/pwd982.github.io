@@ -116,7 +116,8 @@
 			})
             .catch(error => {
 			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000, alert_id);
-			Spinner.classList.remove("d-none")
+			Spinner.classList.add("d-none")
+			btnSubmit.classList.toggle("d-none");
 			})
             form.reset();
         })
