@@ -91,3 +91,8 @@ REGISTRATION (registrasi.html) {
 	}
 }
 ```
+
+## Feedback
+
+Jika kamu mempunyai saran, rekomendasi atau kritik untuk pengembangan web ini, silahkan menuju ke halaman register > silahkan isi pesan di kolom keterangan, terimakasih^^.
+
