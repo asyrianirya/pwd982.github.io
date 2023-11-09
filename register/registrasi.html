@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title> REGISTRASI </title>
     <!------CORE--------->
+	<div comment = "CORE">
 	<link rel="stylesheet" href="style.css"><link href="..\assets\css\bootstrap-5.3.2\bootstrap.min.css" rel="stylesheet">
 	<script src="..\assets\js\add\jquery-3.7.1.slim.min.js"></script><script src="..\assets\js\bootstrap-5.3.2\bootstrap.bundle.min.js"></script>
+	</div>
 	<!--------------->
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -91,45 +93,46 @@
 	
   </div>
 
-	<script>window.jQuery || document.write('<script src="..\\assets\\js\\add\\jquery-3.7.1.slim.min.js"><\/script>')</script>
-  
-	<script> const alertId = "my-alert"; </script>
-	<script> const inputFormScript = atob( 'aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4QlNBSEhHZF83UFdpdHpZaHRtcElzV2Zpd21Pc2FLQklOOExFbjdXNzJ6cTBkN2ZNTFFWLXo1LW9acnkzUWM2dTIvZXhlYw==');</script>
-	
-    <script>
-	function formControl(alert_id,URL){
-        const scriptURL = URL;
-        const form = document.forms['register-form'];
-		const btnSubmit = document.querySelector(".btn-submit"); 
-		const Spinner = document.querySelector(".loading");
-		var myAlert = document.getElementById(alert_id);
+	<div comment="script">
+		<script>window.jQuery || document.write('<script src="..\\assets\\js\\add\\jquery-3.7.1.slim.min.js"><\/script>')</script>
+	  
+		<script> const alertId = "my-alert"; </script>
+		<script> const inputFormScript = atob( 'aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4QlNBSEhHZF83UFdpdHpZaHRtcElzV2Zpd21Pc2FLQklOOExFbjdXNzJ6cTBkN2ZNTFFWLXo1LW9acnkzUWM2dTIvZXhlYw==');</script>
 		
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-			Spinner.classList.remove("d-none");
-			btnSubmit.classList.toggle("d-none");
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => { 
-				Spinner.classList.add("d-none");
-				btnSubmit.classList.toggle("d-none"); 
-				alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000, alert_id);
-				console.log("success");
+		<script>
+		function formControl(alert_id,URL){
+			const scriptURL = URL;
+			const form = document.forms['register-form'];
+			const btnSubmit = document.querySelector(".btn-submit"); 
+			const Spinner = document.querySelector(".loading");
+			var myAlert = document.getElementById(alert_id);
+			
+			form.addEventListener('submit', e => {
+				e.preventDefault()
+				Spinner.classList.remove("d-none");
+				btnSubmit.classList.toggle("d-none");
+				fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+				.then(response => { 
+					Spinner.classList.add("d-none");
+					btnSubmit.classList.toggle("d-none"); 
+					alertSuccess("<strong>SELAMAT!</strong> Kamu berhasil mengirimkan data.", 3000, alert_id);
+					console.log("success");
+				})
+				.catch(error => {
+				alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000, alert_id);
+				Spinner.classList.add("d-none")
+				btnSubmit.classList.toggle("d-none");
+				})
+				form.reset();
 			})
-            .catch(error => {
-			alertDanger("<strong>MAAF!</strong> Kami gagal dalam mengirim data. Harap kontak kami, tunggu sebentar atau coba lagi sesaat.", 3000, alert_id);
-			Spinner.classList.add("d-none")
-			btnSubmit.classList.toggle("d-none");
-			})
-            form.reset();
-        })
-	}
-    </script>
-	
-	<script>formControl(alertId, inputFormScript);</script>
-	
-	<script src="..\assets\js\asyalert.js"></script>	
-	<script src="..\assets\js\gettimedate.js"></script>
-	<script src="..\assets\js\tooltip.js"></script>
-
+		}
+		</script>
+		
+		<script>formControl(alertId, inputFormScript);</script>
+		
+		<script src="..\assets\js\asyalert.js"></script>	
+		<script src="..\assets\js\gettimedate.js"></script>
+		<script src="..\assets\js\tooltip.js"></script>
+	</div>
 </body>
 </html>
