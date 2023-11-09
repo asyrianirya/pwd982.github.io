@@ -13,7 +13,7 @@ FORMAT{
 }
 ##-----------------------
 dir https://github.com/asyrianirya/asyrianirya.github.io/tree/main
-Homepage (index.html) {
+HOMEPAGE (index.html) {
 	+ FILES {
 		+ .CSS {
 			+ bootstrap.min.css ("assets\css\bootstrap-5.3.2\bootstrap.min.css") : [12][5];
@@ -50,8 +50,8 @@ Homepage (index.html) {
 }
 
 dir https://github.com/asyrianirya/asyrianirya.github.io/tree/main/register
-Registration (registrasi.html) {
-	+ Resources {
+REGISTRATION (registrasi.html) {
+	+ RESOURCES {
 		+ .CSS {
 			+ style.css ("style.css"): [7][5];
 			+ bootstrap.min.css ("..\assets\css\bootstrap-5.3.2\bootstrap.min.css"): [7][45];
@@ -62,6 +62,7 @@ Registration (registrasi.html) {
 			+ popper.min.js ("..\assets\js\bootstrap-5.3.2\bootstrap.bundle.min.js"): [8][70];
 			+ asyalert.js ("..\assets\js\asyalert.js"): [130][5];
 			+ gettimedate.js ("..\assets\js\gettimedate.js"): [131][5];
+			+ tooltip.js (..\assets\js\tooltip.js): [132][5];
 		}
 		
 		+ SCRIPT{
@@ -73,7 +74,6 @@ Registration (registrasi.html) {
 			+ formControl(alertId, inputFormScript); : [128][5]
 			+ asyalert.js
 			+ gettimedate.js
-			+ $(document).ready(function(){ $('[data-toggle="tooltip"]').tooltip();}); : [134][5];
 		}
 		
 		+ ELEMENTS {
