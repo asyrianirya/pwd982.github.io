@@ -21,7 +21,9 @@ Homepage (index.html) {
 			+ my.css (assets\css\my.css);
 		}
 		
-		+ Hacked-KerX.ttf (my.css) ("..\\css\\theme\\Hacked-KerX.ttf")
+		+ Hacked-KerX.ttf (my.css) ("..\\css\\theme\\Fonts\\Hacked-KerX\\Hacked-KerX.ttf");
+		+ Play-Regular.ttf ("..\\css\\theme\\Fonts\\Play\\Play-Regular.ttf");
+		+ Play-Bold.ttf ("..\\css\\theme\\Fonts\\Play\\Play-Bold.ttf");
 		
 		+ .JS {
 			+ jquery-3.7.1.slim.min.js ("assets\js\add\jquery-3.7.1.slim.min.js");
