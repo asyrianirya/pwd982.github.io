@@ -49,7 +49,7 @@ dir https://github.com/asyrianirya/asyrianirya.github.io/tree/main/register
 Registration (registrasi.html) {
 	+ Resources {
 		+ .CSS {
-			+ style.css ("style.css"): [7][5];
+			+ style.css ("style.css");
 			+ bootstrap.min.css ("..\assets\css\bootstrap-5.3.2\bootstrap.min.css");
 		}
 		
