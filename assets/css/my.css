@@ -11,10 +11,28 @@
 }
 
 .f-hacked-kerx {
-	font-family: Hacked-KerX;
+	font-family: f-Hacked-KerX;
+}
+
+.f-play {
+	font-family: f-play;
+}
+
+.f-play-bold {
+	font-family: f-play-bold;
 }
 
 @font-face {
-   font-family: Hacked-KerX;
-   src: url("..\\css\\theme\\Hacked-KerX.ttf");
+   font-family: f-Hacked-KerX;
+   src: url("..\\css\\theme\\Fonts\\Hacked-KerX\\Hacked-KerX.ttf");
+}
+
+@font-face {
+   font-family: f-play;
+   src: url("..\\css\\theme\\Fonts\\Play\\Play-Regular.ttf");
+}
+
+@font-face {
+   font-family: f-play-bold;
+   src: url("..\\css\\theme\\Fonts\\Play\\Play-Bold.ttf");
 }
