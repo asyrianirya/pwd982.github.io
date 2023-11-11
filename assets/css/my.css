@@ -36,3 +36,8 @@
    font-family: f-play-bold;
    src: url("..\\css\\theme\\Fonts\\Play\\Play-Bold.ttf");
 }
+
+#canvas {
+    border: 1px solid black;
+
+}
