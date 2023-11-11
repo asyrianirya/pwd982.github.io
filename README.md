@@ -18,7 +18,7 @@ Homepage (index.html) {
 		+ .CSS {
 			+ bootstrap.min.css ("assets\css\bootstrap-5.3.2\bootstrap.min.css");
 			+ style.css ("style.css");
-			+ my.css (assets\css\my.css);
+			+ my.css ("assets\css\my.css");
 		}
 		
 		+ Hacked-KerX.ttf (my.css) ("..\\css\\theme\\Fonts\\Hacked-KerX\\Hacked-KerX.ttf");
