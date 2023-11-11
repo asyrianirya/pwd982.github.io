@@ -18,7 +18,7 @@ Homepage (index.html) {
 		+ .CSS {
 			+ bootstrap.min.css ("assets\css\bootstrap-5.3.2\bootstrap.min.css");
 			+ style.css ("style.css");
-			+ my.css ("assets\css\my.css");
+			+ my.css (assets\css\my.css);
 		}
 		
 		+ Hacked-KerX.ttf (my.css) ("..\\css\\theme\\Fonts\\Hacked-KerX\\Hacked-KerX.ttf");
@@ -29,6 +29,7 @@ Homepage (index.html) {
 			+ jquery-3.7.1.slim.min.js ("assets\js\add\jquery-3.7.1.slim.min.js");
 			+ popper.min.js ("assets\js\add\popper.min.js");
 			+ bootstrap.min.js ("assets\js\bootstrap-5.3.2\bootstrap.min.js");
+			+ thematrix.js ("assets\js\thematrix.js");
 		}
 	}
 	+ FUNCTIONAL {
